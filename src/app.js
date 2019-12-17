@@ -6,7 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     data: {
         rates: {},
         base: null,
-        date: null
+        date: null,
+        amount:0,
+        selectedCurrency: null,
+        selectedCurrencyValue: null,
+        convertedAmount:null
     },
     mounted() {
       this.getRates()
@@ -16,9 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch("https://api.exchangeratesapi.io/latest")
         .then(response => response.json())
         .then(data => this.rates = data.rates)
+      },
+    },
+    computed:  {
+      convertCurrency: function(amount){
+        return this.selectedCurrency * this.amount;
       }
     }
-  })
-})
+  });
+});
 
         //.then(data => this.dogImgURL = data.message);

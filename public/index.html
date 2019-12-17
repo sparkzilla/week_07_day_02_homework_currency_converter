@@ -12,13 +12,31 @@
   <div id="app">
   <header>
   <h1>EXCHANGE</h1>
+  </header>
+<h2> Convert from Euros</h2>
+  <form v-on:submit.prevent ="convertCurrency(amount)">
+    <div class="form-field">
+      <label for="amount">Amount</label>
+      <input v-model="amount" type="text" id="amount" /><br />
+    </div>
+    <div class="form-field">
+    <label for="currency_select">Select a Currency</label>
+    <select id="currency_select" v-model="selectedCurrency">
+      <option disabled value="">Select a currency</option>
+        <option v-for="(key,value) in rates" :value=key>{{value}}</option>
+    </select>
+    </div>
+    </form>
+
+    <h2>{{convertCurrency}}</h2>
+
+
 
   <ul>
     <li v-for="(key, value) in rates" v-bind:class="getRates">
       <span>{{value}} {{key}}</span>
     </li>
-
-</header>
+  </ul>
 
   </div>
 
