@@ -10,9 +10,14 @@
 </head>
 <body>
   <div id="app">
-    <header>
+  <header>
   <h1>EXCHANGE</h1>
-  
+
+  <ul>
+    <li v-for="(key, value) in rates" v-bind:class="getRates">
+      <span>{{value}} {{key}}</span>
+    </li>
+
 </header>
 
   </div>
