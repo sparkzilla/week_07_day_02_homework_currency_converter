@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
         base: null,
         date: null,
         amount:0,
-        selectedCurrency: null,
+        selectedCurrency: 0,
         direction: "fromEuros",
-        convertedAmount:null
+
     },
     mounted() {
       this.getRates()
@@ -25,9 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
     computed:  {
       conversion: function(amount){
         if(this.direction === "fromEuros"){
-        return (this.selectedCurrency * this.amount).toFixed(2);
+          let step1 = (this.selectedCurrency * this.amount).toFixed(2);
+          return this.amount + " Euros = " + step1;
         } else {
-        return (this.amount / this.selectedCurrency).toFixed(2);
+        let step1 = (this.amount / this.selectedCurrency).toFixed(2);
+           return this.amount + " = " + step1 + " Euros";
         }
       }
     }

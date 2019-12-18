@@ -20,16 +20,16 @@
       <input v-model="amount" type="text" id="amount" /><br />
     </div>
     <div class="form-field">
-    <label for="currency_select">Select a Currency</label>
+    <label for="currency_select">Currency</label>
     <select id="currency_select" v-model="selectedCurrency">
-      <option disabled value="">Currency</option>
+      <option disabled value="">Select a Currency</option>
         <option v-for="(key,value) in rates" :value=key>{{value}}</option>
     </select>
     <div class="form-field">
       <label class="radio">
         <input v-model="direction" type="radio" value="toEuros">
       Convert to Euros
-      </label>
+      </label><br />
       <label class="radio">
         <input v-model="direction" type="radio" value="fromEuros">
       Convert from Euros
