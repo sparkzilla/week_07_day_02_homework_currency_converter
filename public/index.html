@@ -11,10 +11,10 @@
 <body>
   <div id="app">
   <header>
-  <h1>EXCHANGE</h1>
+  <h1>Mark's Currency Exchange</h1>
   </header>
-<h2> Convert from Euros</h2>
-  <form v-on:submit.prevent ="convertCurrency(amount)">
+  <section>
+<h2> Converter</h2>
     <div class="form-field">
       <label for="amount">Amount</label>
       <input v-model="amount" type="text" id="amount" /><br />
@@ -22,21 +22,33 @@
     <div class="form-field">
     <label for="currency_select">Select a Currency</label>
     <select id="currency_select" v-model="selectedCurrency">
-      <option disabled value="">Select a currency</option>
+      <option disabled value="">Currency</option>
         <option v-for="(key,value) in rates" :value=key>{{value}}</option>
     </select>
+    <div class="form-field">
+      <label class="radio">
+        <input v-model="direction" type="radio" value="toEuros">
+      Convert to Euros
+      </label>
+      <label class="radio">
+        <input v-model="direction" type="radio" value="fromEuros">
+      Convert from Euros
+      </label>
+      </div>
     </div>
-    </form>
 
-    <h2>{{convertCurrency}}</h2>
+    <h2>{{conversion}}</h2>
 
+ </section>
 
-
+<section>
+<h2> Daily Rates</h2>
   <ul>
     <li v-for="(key, value) in rates" v-bind:class="getRates">
-      <span>{{value}} {{key}}</span>
+      <span>{{value}}: {{key}}</span>
     </li>
   </ul>
+</section>
 
   </div>
 

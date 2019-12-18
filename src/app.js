@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         date: null,
         amount:0,
         selectedCurrency: null,
-        selectedCurrencyValue: null,
+        direction: "fromEuros",
         convertedAmount:null
     },
     mounted() {
@@ -23,8 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     },
     computed:  {
-      convertCurrency: function(amount){
-        return this.selectedCurrency * this.amount;
+      conversion: function(amount){
+        if(this.direction === "fromEuros"){
+        return (this.selectedCurrency * this.amount).toFixed(2);
+        } else {
+        return (this.amount / this.selectedCurrency).toFixed(2);
+        }
       }
     }
   });
